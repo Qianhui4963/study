@@ -4,11 +4,11 @@ import Hello from './component/Hello';
 import List from './component/List';
 
 function App() {
-
+  let msg = "React App";
   let ele = (
     <div className="App">
       <div>
-        <Hello />
+        <Hello msg={msg} />
       </div>
       <p className="summary">
         你可以在这里了解我的想法。
