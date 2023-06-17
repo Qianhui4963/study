@@ -7,7 +7,6 @@ function Hello(props) {
     function handleClick(a1, a2, e) {
         setNum(num + 1)
         console.log("Hello::handleClick", num)
-
         // console.log("arg", [a1, a2], e)
     }
     function handleClickBtn() {
