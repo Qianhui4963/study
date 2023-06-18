@@ -1,22 +1,38 @@
+import store from "../store";
+import { addList } from "../store";
 
+let { data } = store.getState()
 
+setTimeout(() => {
+    store.dispatch(addList({ id: 'addList', title: 'addList', completed: false }))
+    console.log("setTimeout:data::", store.getState())
+    data = store.getState().data
+    data.slice()
+    console.log(data)
+}
+    , 5000)
+console.log(data)
 function ToDoSection(props) {
     const ele = (
         <section className="todo-section">
             <div className="new-todo">
                 <input className="new-todo-box" type="text" placeholder="What needs to be done?" />
-                <input  className="switch-all" type="checkbox" id="switch-all" />
+                <input className="switch-all" type="checkbox" id="switch-all" />
                 <label className="switch-all" htmlFor="switch-all"></label>
             </div>
             <ul className="todo-list">
-                <li className="todo completed">
-                    <input className="switch" type="checkbox" />
-                    <label htmlFor=""></label>
-                    <button className="destroy"></button>
-                </li>
+                {
+                    data.map((item, index) => (
+                        <li className={item.completed ? 'todo completed' : 'todo'} key={item.id}>
+                            <input className="switch" type="checkbox" />
+                            <label>{item.title}</label>
+                            <button className="destroy"></button>
+                        </li>
+                    ))
+                }
                 <li className="todo">
                     <input className="switch" type="checkbox" />
-                    <label htmlFor=""></label>
+                    <label htmlFor="">asdasdas</label>
                     <button className="destroy"></button>
                 </li>
             </ul>
